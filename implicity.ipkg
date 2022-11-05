@@ -14,7 +14,8 @@ authors = "Perigord-Truffle"
 langversion >= 0.6.0
 
 -- packages to add to search path
--- depends =
+depends = contrib
+        , sop >= 0.6.0
 
 -- modules to install
 -- modules =

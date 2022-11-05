@@ -37,16 +37,17 @@
         "nixpkgs-unstable": "nixpkgs-unstable"
       },
       "locked": {
-        "lastModified": 1667522961,
-        "narHash": "sha256-4DPVyA8HVxb5XPoA9JV8sWJPyuur9nSAegys4qT0K3w=",
+        "lastModified": 1667552467,
+        "narHash": "sha256-aIA1zI4j1TmEA7UVUOEhLB7fMlyGqYCDeg7Waqbg4bs=",
         "owner": "Trouble-Truffle",
         "repo": "Idris-nix",
-        "rev": "49de2d767125e287d84f9003dcd53cbc04b84d45",
+        "rev": "e42bc2eeb36b28e3cfb60823030361b4f274646a",
         "type": "github"
       },
       "original": {
         "owner": "Trouble-Truffle",
         "repo": "Idris-nix",
+        "rev": "e42bc2eeb36b28e3cfb60823030361b4f274646a",
         "type": "github"
       }
     },
