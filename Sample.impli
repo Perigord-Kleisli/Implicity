@@ -1,0 +1,74 @@
+// This is a comment
+
+import Bar
+import Bar hiding (foo)
+import Bar as Sa 
+//Automatically does a qualified import
+
+data List a where
+  (::) : a -> List a -> List a 
+  Nil : List a
+//Wont be the actual definition of List, this is only a demonstration
+
+// List a = a :: List a
+//        | Nil
+// This one also works
+
+add : Int -> Int
+add x y = x + y
+
+//Supports a form of mixfix syntax
+syntax if then else : Bool -> a -> a -> a
+if True then _ else b = b
+if False then a else _ = a
+
+// All mixfix functions can be "lambda-ized" by adding a `\` on the first keyword
+// \if True a b == (if True then a else b)
+
+ι : Nat -> [Nat]
+ι x = [1..x]
+
+~ : Int -> Int
+~ x = ~x
+
+//Unicode symbols are used here
+∞ : a -> [a]
+∞ x = x : ∞ x 
+
+// Function overloading is part of it
+// unlike haskell: you have to specify something is an operator
+operator ~ : Int -> Int -> Int
+x ~ y = x ~ y
+
+operator ι : [a] -> [a] -> [Maybe Int]
+operator xs ι (y::ys) = find y xs :: (xs ι ys)
+
+operator <$$> : Functor f => (a -> b) -> f a -> f b
+(<$$>) = (<$>) . (<$>)
+
+//operator Φ : a -> a -> a -> a
+//operator Φ : a -> a
+//Both are invalid, operators can only have 3 arguments
+
+//No precedence, all operators are always evaluated right to left
+// (*2) <$$> [2,4,5] ι [1,2,3,4] {+} [4,3,1,20]
+// => (*2) <$$> [2,4,5] ι [5,5,4,24]
+// => (*2) <$$> [Just 2, Just 2, Just 1, Nothing]
+// => [Just 4, Just 4, Just 2, Nothing]
+// {<operator>} possible `zipWith <operator>` syntax sugar?
+
+// fϙo : a -> a
+// operator -foo : a -> a
+//these are invalid, you cannot mix alpha characters and non-alpha characters 
+//in function names, this is so that you can place variables next to operators
+//without needing a space i.e `foo+bar`
+
+main : Int
+main = do
+  let x = 4;
+  x = 2; //Yeah there's probably gonna be mutation here
+  print "Hello World";
+  let add2 = add 2; // Currying is a feature
+  print (add2 6); // 8 
+  print (map add2 ∞5 + ι10); 
+  // prefix operators => functions => infix operators 
